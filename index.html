@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="public/logo/image1.jpg" />
+    <title>EEGSS | McGill ECE Graduate Society</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-50: #e8f0f8;
+            --brand-100: #c6d9f2;
+            --brand-200: #a4c1eb;
+            --brand-300: #82aae5;
+            --brand-400: #6092de;
+            --brand-500: #3e7bd8;
+            --brand-600: #3262ad;
+            --brand-700: #254982;
+            
+            --bg-light: #F3F8FF;
+            --bg-dark: #232323;
+            --text-light: #1a1a1a;
+            --text-dark: #e8f0f8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: var(--bg-dark);
+                --text: var(--text-dark);
+                --card-bg: rgba(42, 42, 42, 0.8);
+                --nav-bg: rgba(35, 35, 35, 0.85);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: var(--bg-light);
+                --text: var(--text-light);
+                --card-bg: rgba(255, 255, 255, 0.8);
+                --nav-bg: rgba(255, 255, 255, 0.85);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation - IMPROVED */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            padding: 1.25rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--brand-500);
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-500);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 5rem 0;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 .gradient-text {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--brand-50);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            color: var(--brand-600);
+            font-weight: 500;
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--brand-500);
+            border-radius: 50%;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-400));
+            color: white;
+            box-shadow: 0 4px 20px rgba(62, 123, 216, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(62, 123, 216, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--brand-500);
+            border: 2px solid var(--brand-500);
+        }
+
+        .btn-secondary:hover {
+            background: var(--brand-500);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin: 5rem 0 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        /* Cards Grid - IMPROVED */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(62, 123, 216, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-500), var(--brand-300));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 48px rgba(62, 123, 216, 0.25);
+            border-color: rgba(62, 123, 216, 0.3);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .card p {
+            opacity: 0.75;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            color: var(--brand-500);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .card-link::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-link::after {
+            transform: translateX(4px);
+        }
+
+        /* Events Section */
+        .events-section {
+            position: relative;
+            min-height: 650px;
+            border-radius: 28px;
+            overflow: hidden;
+            margin: 5rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .events-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .events-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(62, 123, 216, 0.92), rgba(96, 146, 222, 0.85));
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+
+        .events-content {
+            color: white;
+            max-width: 700px;
+        }
+
+        .events-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .events-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .btn-light {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-light:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(62, 123, 216, 0.1);
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            opacity: 0.6;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--card-bg);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--brand-500);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.95rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 3rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .events-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 2rem;
+            }
+
+            .events-overlay {
+                padding: 2rem;
+            }
+
+            .events-content h2 {
+                font-size: 2rem;
+            }
+
+            .events-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#about" class="logo">
+                <img src="/logo/image1.jpg" alt="EEGSS Logo">
+                <span class="logo-text">EEGSS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#events">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="about" class="hero">
+            <div class="hero-content">
+                <div class="badge">McGill ECE Graduate Society</div>
+                <h1>
+                    <span class="gradient-text">Empowering</span><br>
+                    Graduate Excellence
+                </h1>
+                <p>Representing the graduate students of the Electrical and Computer Engineering department at McGill University. We bridge the gap between students, faculty, and the industry.</p>
+                <div class="cta-buttons">
+                    <a href="#resources" class="btn btn-primary">Get Started →</a>
+                    <a href="#events" class="btn btn-secondary">View Events</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="project/mcconnell-building.jpg" alt="McConnell Engineering Building">
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources">
+            <div class="section-title">
+                <h2>Quick Access</h2>
+                <p>Everything you need to get connected and stay informed</p>
+            </div>
+
+            <div class="cards-grid">
+                <a href="https://forms.gle/Je68JiBsn4a4686f8" target="_blank" class="card">
+                    <div class="card-icon">
+                        <img src="project/lounge-access.png" alt="Lounge Access">
+                    </div>
+                    <h3>Lounge Access</h3>
+                    <p>Request access to our exclusive graduate lounge for studying and networking.</p>
+                    <div class="card-link">Request Access</div>
+                </a>
+
+                <a href="https://www.instagram.com/mcgill.eegss/" target="_blank" class="card">
+                    <div class="card-icon">
+                        <img src="project/instagram.png" alt="Instagram">
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Follow us for the latest updates, event photos, and community highlights.</p>
+                    <div class="card-link">Follow Us</div>
+                </a>
+
+                <a href="mailto:eegss.pgss@mail.mcgill.ca" class="card">
+                    <div class="card-icon">
+                        <img src="project/get-in-touch.png" alt="Get in Touch">
+                    </div>
+                    <h3>Get in Touch</h3>
+                    <p>Have questions? Reach out to us directly via email.</p>
+                    <div class="card-link">eegss.pgss@mail.mcgill.ca</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="events-section">
+            <img src="social-events/random.jpg" alt="EEGSS Events" class="events-bg">
+            <div class="events-overlay">
+                <div class="events-content">
+                    <h2>Connect & Celebrate</h2>
+                    <p>Join us for exciting socials, hackathons, and networking nights throughout the year. Build lasting connections with fellow graduate students and industry professionals.</p>
+                    <a href="events.html" class="btn btn-light">View Schedule →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo/image1.jpg" alt="EEGSS Logo">
+                <div>
+                    <div style="font-weight: bold; font-size: 1.1rem; color: var(--brand-500);">EEGSS</div>
+                    <div style="font-size: 0.9rem; opacity: 0.6;">McGill ECE Graduate Society</div>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/mcgill.eegss/" target="_blank" title="Instagram">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="mailto:eegss.pgss@mail.mcgill.ca" title="Email">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EEGSS McGill. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
