@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ['main']
+    paths: ['src/**', index.html, .github/workflows/*.yml, package.json]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'deploy-production'
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    name: Build application on `main`
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: ">=21"
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install
+      - name: Build Webpage
+        run: npm run build
+      - name: Upload Page artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './dist' # Upload dist repository
+          retention-days: 30
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
