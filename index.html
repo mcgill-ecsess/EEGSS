@@ -109,19 +109,8 @@
         }
 
         .desktop-nav {
-            display: flex;
+            display: none;
             gap: 3rem;
-        }
-
-        .desktop-nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 1.4rem;
-            transition: color 0.3s;
-            position: relative;
-            letter-spacing: 0.05em;
         }
 
         @media (min-width: 768px) {
@@ -133,11 +122,18 @@
         .desktop-nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
             transition: color 0.3s;
             position: relative;
+            letter-spacing: 0.05em;
         }
+
+
+
+
+
 
         .desktop-nav a::after {
             content: '';
@@ -172,6 +168,49 @@
         }
 
         /* Hero Section */
+        @media (max-width: 768px) {
+            .hero-cta {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: calc(100vh - 180px);
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding-top: 2rem;
+            }
+
+            .hero h1 {
+                margin-top: 2.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-description {
+                margin-bottom: 2.5rem;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+        }
+
         .hero {
             min-height: calc(100vh - 160px);
             display: grid;
@@ -467,12 +506,50 @@
             transform: translateX(4px);
         }
 
-        /* Events Section */
+        /* Events Showcase */
         .events-showcase {
             position: relative;
             border-radius: 32px;
             overflow: hidden;
             height: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .events-showcase {
+                height: auto;
+                min-height: 500px;
+                border-radius: 24px;
+                margin: 0 -1.5rem;
+            }
+
+            .events-overlay {
+                padding: 2.5rem 1.5rem 3rem;
+                align-items: flex-start;
+            }
+
+            .events-content {
+                max-width: 100%;
+                padding: 0;
+                text-align: left;
+            }
+
+            .events-content h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+                text-align: left;
+            }
+
+            .events-content p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+                text-align: left;
+            }
+
+            .btn-light {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
         }
 
         .events-image {
@@ -495,10 +572,12 @@
             padding: 3rem;
         }
 
+
         .events-content {
             max-width: 700px;
             text-align: center;
             color: white;
+            padding: 3rem;
         }
 
         .events-content h2 {
@@ -512,7 +591,7 @@
         .events-content p {
             font-size: 1.25rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
         }
 
@@ -602,6 +681,32 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                display: block;
+            }
+
+            .footer-section:first-child {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .footer-section:first-child .logo-container {
+                justify-content: center;
+            }
+
+            .footer-section:first-child .social-links {
+                justify-content: center;
+            }
+
+            .footer-section:nth-child(2),
+            .footer-section:nth-child(3) {
+                display: inline-block;
+                width: 48%;
+                vertical-align: top;
+            }
         }
 
         .footer-section h4 {
@@ -739,7 +844,7 @@
                     </h1>
                     <p class="hero-description">
                         Representing the Graduate students of the Electrical and Computer Engineering department at
-                        McGill University. We bridge the gap between students, faculty, and industry through innovative
+                        McGill University. We bridge the gap between students, faculty, & industry through innovative
                         programs, exclusive events, and a thriving community.
                     </p>
                     <div class="hero-cta">
@@ -854,11 +959,11 @@
                         <div class="events-content">
                             <h2>Connect & Celebrate</h2>
                             <p>
-                                Join us for exciting socials, hackathons, and networking nights throughout the year.
-                                Build lasting connections with fellow graduate students and industry professionals.
+                                Join us for exciting socials & networking nights throughout the year.
+                                Build lasting connections with fellow graduate students.
                             </p>
                             <a href="events.html" class="btn btn-light">
-                                View All Events
+                                View Events
                                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -879,12 +984,7 @@
                     <div class="logo-container" style="margin-bottom: 1rem;">
                         <img src="logo/eegss.png" alt="EEGSS Logo"
                             style="width: 48px; height: 48px; border-radius: 12px;">
-                        <span
-                            style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--brand-primary); letter-spacing: 0.05em; text-transform: uppercase;">EEGSS</span>
                     </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                        McGill ECE Graduate Society
-                    </p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/mcgill.eegss/" target="_blank" class="social-link">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -995,7 +1095,6 @@
                         behavior: 'smooth'
                     });
 
-                    // Update active nav item
                     document.querySelectorAll('.nav-item').forEach(item => {
                         item.classList.remove('active');
                     });
@@ -1005,7 +1104,6 @@
                         navItem.classList.add('active');
                     }
 
-                    // Update desktop nav
                     document.querySelectorAll('.desktop-nav a').forEach(item => {
                         item.classList.remove('active');
                     });
@@ -1049,7 +1147,7 @@
         // Counter Animation
         function animateCounter(element) {
             const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000; // 2 seconds
+            const duration = 2000;
             const increment = target / (duration / 16); // 60fps
             let current = 0;
 
