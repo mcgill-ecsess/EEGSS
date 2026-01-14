@@ -1,0 +1,34 @@
+name: Test build on Pull Requests
+
+on:
+  # Runs on pushes to PR against `main` branch
+  push:
+    pull_request:
+      branches:
+        - main
+  
+  # Run this workflow manually
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
+jobs:
+  test-build:
+    name: Test build on Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: ">=21"
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install
+      - name: Build Webpage
+        run: npm run build

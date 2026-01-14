@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <title>Electrical Engineering Graduate Students' Society</title>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-eegss-navy: #1e3a5f;
+        --color-eegss-baby: #87ceeb;
+        --color-eegss-pastel: #b0e0e6;
+        --color-eegss: #1e3a5f;
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <html class="scroll-smooth">
+  <body class="text-gray-900 bg-gradient-to-b from-[#87ceeb] to-[#b0e0e6] min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-[url('/McConnell.jpg')] bg-cover bg-center bg-fixed md:bg-fixed">
+      <!-- Gradient overlay for depth and readability -->
+      <div class="absolute inset-0 bg-gradient-to-br from-eegss-navy/60 via-eegss-baby/40 to-eegss-pastel/50"></div>
+      
+      <!-- Animated background elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl animate-[float_6s_ease-in-out_infinite]"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-eegss-pastel/20 rounded-full blur-3xl animate-[float_6s_ease-in-out_infinite_2s]"></div>
+        <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+      </div>
+      
+      <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center animate-[fadeInUp_0.8s_ease-out]">
+        <!-- Logo placeholder with animation -->
+        <div class="w-32 h-32 mx-auto mb-8 bg-white/40 backdrop-blur-lg rounded-2xl flex items-center justify-center border-2 border-white/60 shadow-2xl transition-all duration-500 hover:scale-110 hover:rotate-3 animate-[float_6s_ease-in-out_infinite]">
+          <span class="text-eegss-navy text-2xl font-bold">EEGSS</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl transform transition-all duration-500 hover:scale-105">
+          Electrical Engineering Graduate Students' Society
+        </h1>
+        <p class="text-xl sm:text-2xl text-white/95 max-w-2xl mx-auto drop-shadow-lg font-medium">
+          Connecting graduate students in Electrical Engineering at McGill University
+        </p>
+      </div>
+    </section>
+
+    <!-- Combined Contact & Events Section -->
+    <section class="min-h-screen md:h-screen flex items-center relative overflow-hidden py-8 md:py-0">
+      <!-- Decorative background elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-eegss-pastel/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-eegss-baby/20 rounded-full blur-3xl -ml-32 -mb-32"></div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full h-full relative z-10 py-4 sm:py-6 lg:py-8">
+        <div class="h-full grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <!-- Contact Section - 25% width -->
+          <div class="lg:col-span-1 flex flex-col justify-center min-h-0">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-eegss-navy animate-[fadeInUp_0.8s_ease-out]">Get in Touch</h2>
+            <p class="text-eegss-navy/70 mb-4 sm:mb-6 text-sm sm:text-base">Connect with us and join our community</p>
+            
+            <div class="space-y-4 sm:space-y-6">
+              <!-- Instagram -->
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="block bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-2xl border-2 border-white/60 transition-all duration-500 hover:scale-105 hover:shadow-xl group cursor-pointer">
+                <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-3 bg-gradient-to-br from-eegss-pastel to-eegss-baby rounded-xl transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 shadow-lg">
+                  <i data-lucide="instagram" class="w-6 h-6 sm:w-7 sm:h-7 text-eegss-navy"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold mb-3 text-eegss-navy">Instagram</h3>
+                <p class="text-sm text-eegss-navy/70 mb-4">Follow us on Instagram</p>
+                <div class="w-full px-4 py-2 text-sm bg-gradient-to-r from-eegss-navy to-eegss-baby text-white rounded-lg transition-all duration-300 group-hover:from-eegss-baby group-hover:to-eegss-navy shadow-lg font-semibold text-center">
+                  @eegss_mcgill
+                </div>
+              </a>
+
+              <!-- Lounge Access Form -->
+              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="block bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-2xl border-2 border-white/60 transition-all duration-500 hover:scale-105 hover:shadow-xl group cursor-pointer">
+                <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-3 bg-gradient-to-br from-eegss-pastel to-eegss-baby rounded-xl transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 shadow-lg">
+                  <i data-lucide="key" class="w-6 h-6 sm:w-7 sm:h-7 text-eegss-navy"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold mb-3 text-eegss-navy">Lounge Access</h3>
+                <p class="text-sm text-eegss-navy/70 mb-4">Request access to the graduate lounge</p>
+                <div class="w-full px-4 py-2 text-sm bg-gradient-to-r from-eegss-navy to-eegss-baby text-white rounded-lg transition-all duration-300 group-hover:from-eegss-baby group-hover:to-eegss-navy shadow-lg font-semibold text-center">
+                  Request Access
+                </div>
+              </a>
+
+              <!-- Email Contact -->
+              <a href="mailto:contact@eegss.mcgill.ca" class="block bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-2xl border-2 border-white/60 transition-all duration-500 hover:scale-105 hover:shadow-xl group cursor-pointer">
+                <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-3 bg-gradient-to-br from-eegss-pastel to-eegss-baby rounded-xl transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 shadow-lg">
+                  <i data-lucide="mail" class="w-6 h-6 sm:w-7 sm:h-7 text-eegss-navy"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold mb-3 text-eegss-navy">Email</h3>
+                <p class="text-sm text-eegss-navy/70 mb-4">Send us an email</p>
+                <div class="w-full px-4 py-2 text-sm bg-gradient-to-r from-eegss-navy to-eegss-baby text-white rounded-lg transition-all duration-300 group-hover:from-eegss-baby group-hover:to-eegss-navy shadow-lg font-semibold text-center break-all">
+                  contact@eegss.mcgill.ca
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Events Section - 75% width -->
+          <div class="lg:col-span-3 flex flex-col h-full min-h-0">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-eegss-navy animate-[fadeInUp_0.8s_ease-out]">Events</h2>
+            <p class="text-eegss-navy/70 mb-3 sm:mb-4 text-sm sm:text-base">Check out our latest gatherings and activities</p>
+            
+            <!-- Carousel Container -->
+            <div class="relative flex-1 min-h-0 flex flex-col">
+              <div id="carousel" class="relative overflow-hidden rounded-2xl h-full flex items-center flex-1 min-h-0">
+                <!-- Blurred background image -->
+                <div id="carousel-bg" class="absolute inset-0 bg-cover bg-center blur-2xl scale-110 opacity-50 transition-opacity duration-700"></div>
+                <div id="carousel-track" class="relative z-10 flex transition-transform duration-700 ease-in-out items-center w-full">
+                  <!-- Event images will be inserted here -->
+                </div>
+              </div>
+              
+              <!-- Navigation Buttons -->
+              <button 
+                id="prevBtn" 
+                class="hidden md:block absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white rounded-full p-3 transition-all duration-300 hover:scale-125 hover:rotate-12 shadow-2xl z-10 border-2 border-white/80"
+                aria-label="Previous image"
+              >
+                <i data-lucide="chevron-left" class="w-6 h-6 text-eegss-navy"></i>
+              </button>
+              <button 
+                id="nextBtn" 
+                class="hidden md:block absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white rounded-full p-3 transition-all duration-300 hover:scale-125 hover:-rotate-12 shadow-2xl z-10 border-2 border-white/80"
+                aria-label="Next image"
+              >
+                <i data-lucide="chevron-right" class="w-6 h-6 text-eegss-navy"></i>
+              </button>
+              
+              <!-- Dots Indicator -->
+              <div id="dots" class="flex justify-center gap-2 mt-4 z-10">
+                <!-- Dots will be inserted here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-eegss-navy via-eegss-baby to-eegss-navy text-white py-10 relative overflow-hidden">
+      <div class="absolute inset-0 bg-eegss-navy/90"></div>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <p class="text-sm font-medium">&copy; 2024 Electrical Engineering Graduate Students' Society. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+      
+      // Carousel functionality
+      const carouselTrack = document.getElementById('carousel-track');
+      const carouselBg = document.getElementById('carousel-bg');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const dotsContainer = document.getElementById('dots');
+      
+      // Event images from public folder
+      const eventImages = [
+        { src: '/IMG_5538.jpg', alt: 'Event 2' },
+        { src: '/IMG_5541.jpg', alt: 'Event 3' },
+        { src: '/IMG_5611.jpg', alt: 'Event 4' },
+        { src: '/IMG_5618.jpg', alt: 'Event 5' },
+        { src: '/IMG_5620.jpg', alt: 'Event 6' }
+      ];
+      
+      let currentIndex = 0;
+      
+      // Create carousel items
+      function createCarouselItems() {
+        carouselTrack.innerHTML = eventImages.map((image, index) => `
+          <div class="min-w-full flex-shrink-0 flex items-center justify-center p-4">
+            <img 
+              src="${image.src}" 
+              alt="${image.alt}" 
+              loading="lazy"
+              class="w-full max-w-full h-auto max-h-[calc(100vh-350px)] object-contain rounded-2xl md:max-h-[calc(100vh-300px)]"
+            />
+          </div>
+        `).join('');
+        
+        // Create dots
+        dotsContainer.innerHTML = eventImages.map((_, index) => `
+          <button 
+            class="h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-eegss-navy w-8 shadow-lg' : 'bg-white/60 w-2 hover:bg-white/80'}"
+            data-index="${index}"
+            aria-label="Go to slide ${index + 1}"
+          ></button>
+        `).join('');
+      }
+      
+      // Update carousel position
+      function updateCarousel() {
+        carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update blurred background image
+        if (carouselBg && eventImages[currentIndex]) {
+          carouselBg.style.backgroundImage = `url('${eventImages[currentIndex].src}')`;
+        }
+        
+        // Update dots
+        const dots = dotsContainer.querySelectorAll('button');
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.remove('bg-white/60', 'w-2');
+            dot.classList.add('bg-eegss-navy', 'w-8', 'shadow-lg');
+          } else {
+            dot.classList.remove('bg-eegss-navy', 'w-8', 'shadow-lg');
+            dot.classList.add('bg-white/60', 'w-2');
+          }
+        });
+      }
+      
+      // Navigation functions
+      function goToNext() {
+        currentIndex = (currentIndex + 1) % eventImages.length;
+        updateCarousel();
+      }
+      
+      function goToPrev() {
+        currentIndex = (currentIndex - 1 + eventImages.length) % eventImages.length;
+        updateCarousel();
+      }
+      
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+      }
+      
+      // Event listeners
+      nextBtn.addEventListener('click', goToNext);
+      prevBtn.addEventListener('click', goToPrev);
+      
+      dotsContainer.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+          goToSlide(parseInt(e.target.dataset.index));
+        }
+      });
+      
+      // Auto-play
+      let autoPlayInterval = setInterval(goToNext, 5000);
+      
+      // Pause on hover
+      const carousel = document.getElementById('carousel');
+      carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+      carousel.addEventListener('mouseleave', () => {
+        autoPlayInterval = setInterval(goToNext, 5000);
+      });
+      
+      // Initialize
+      createCarouselItems();
+      updateCarousel();
+      
+      // Set initial background image
+      if (carouselBg && eventImages[0]) {
+        carouselBg.style.backgroundImage = `url('${eventImages[0].src}')`;
+      }
+      
+      // Scroll animations for smooth reveal
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      // Observe sections (skip hero)
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section, index) => {
+        if (index > 0) { // Skip hero section
+          section.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-900', 'ease-[cubic-bezier(0.4,0,0.2,1)]');
+          observer.observe(section);
+        }
+      });
+      
+      // Re-initialize icons after carousel creation
+      setTimeout(() => lucide.createIcons(), 100);
+    </script>
+  </body>
+</html>
