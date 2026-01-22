@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" id="favicon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -40,7 +40,7 @@
   <html class="scroll-smooth">
   <body class="text-gray-900 bg-gradient-to-b from-[#87ceeb] to-[#b0e0e6] min-h-screen">
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-[url('/McConnell.jpg')] bg-cover bg-center bg-fixed md:bg-fixed">
+    <section id="hero-section" class="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-fixed md:bg-fixed">
       <!-- Gradient overlay for depth and readability -->
       <div class="absolute inset-0 bg-gradient-to-br from-eegss-navy/60 via-eegss-baby/40 to-eegss-pastel/50"></div>
       
@@ -168,6 +168,27 @@
     </footer>
 
     <script>
+      // Detect base path - works for both dev (/) and production (/EEGSS)
+      const getBasePath = () => {
+        const path = window.location.pathname;
+        // If path starts with /EEGSS, use that as base, otherwise use /
+        return path.startsWith('/EEGSS') ? '/EEGSS' : '';
+      };
+      
+      const BASE_PATH = getBasePath();
+      
+      // Set hero background image with base path
+      const heroSection = document.getElementById('hero-section');
+      if (heroSection) {
+        heroSection.style.backgroundImage = `url('${BASE_PATH}/McConnell.jpg')`;
+      }
+      
+      // Update favicon path with base path
+      const favicon = document.getElementById('favicon');
+      if (favicon) {
+        favicon.href = `${BASE_PATH}/vite.svg`;
+      }
+      
       // Initialize Lucide icons
       lucide.createIcons();
       
@@ -178,13 +199,13 @@
       const nextBtn = document.getElementById('nextBtn');
       const dotsContainer = document.getElementById('dots');
       
-      // Event images from public folder
+      // Event images from public folder - Vite serves public folder from root
       const eventImages = [
-        { src: '/IMG_5538.jpg', alt: 'Event 2' },
-        { src: '/IMG_5541.jpg', alt: 'Event 3' },
-        { src: '/IMG_5611.jpg', alt: 'Event 4' },
-        { src: '/IMG_5618.jpg', alt: 'Event 5' },
-        { src: '/IMG_5620.jpg', alt: 'Event 6' }
+        { src: `${BASE_PATH}/IMG_5538.jpg`, alt: 'Event 2' },
+        { src: `${BASE_PATH}/IMG_5541.jpg`, alt: 'Event 3' },
+        { src: `${BASE_PATH}/IMG_5611.jpg`, alt: 'Event 4' },
+        { src: `${BASE_PATH}/IMG_5618.jpg`, alt: 'Event 5' },
+        { src: `${BASE_PATH}/IMG_5620.jpg`, alt: 'Event 6' }
       ];
       
       let currentIndex = 0;
