@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
-    paths: ['src/**', '*.html', .github/workflows/*.yml, package.json]
+    branches: ["main"]
+    paths: ["src/**", "*.html", .github/workflows/*.yml, package.json]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,7 +17,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: 'deploy-production'
+  group: "deploy-production"
   cancel-in-progress: true
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ">=21"
-          cache: 'npm'
+          cache: "npm"
       - name: Install dependencies
         run: npm install
       - name: Build Webpage
@@ -39,7 +39,7 @@ jobs:
       - name: Upload Page artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v4
         with:
-          path: './dist' # Upload dist repository
+          path: "./dist" # Upload dist repository
           retention-days: 30
       - name: Deploy to GitHub Pages
         id: deployment
